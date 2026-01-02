@@ -54,17 +54,14 @@
     public boolean addFollowee(String name) {
 
         if (this.follows(name)) {
-            System.out.println(this.name + " already follows " + name);
             return false;
         }
         if (this.fCount >= maxfCount){
-            System.out.println(this.name + " can't follow " + name + " (follows list is full)");
             return false;
         }
        
         this.follows[fCount] = name;
         this.fCount++;
-        System.out.println(this.name + " now follows " + name);
         return true;
     }
 
@@ -78,11 +75,9 @@
                 }
                 fCount--;
                 this.follows[fCount] = null;
-                System.out.println(this.name + " removed follow from " + name);
                 return true;
             }
         }
-        System.out.println(this.name + " doesn't follow " + name);
         return false;
     }
 
@@ -103,7 +98,7 @@
     public boolean isFriendOf(User other) {
         return this.follows(other.name) && other.follows(this.name);
     }
-    
+
     /** Returns this user's name, and the names that s/he follows. */
     public String toString() {
         String ans = name + " -> ";
